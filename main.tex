@@ -1,0 +1,273 @@
+%%%%
+% MTecknology's Resume
+%%%%
+% Author: Michael Lustfield
+% License: CC-BY-4
+% - https://creativecommons.org/licenses/by/4.0/legalcode.txt
+%%%%
+
+\documentclass[letterpaper,10pt]{article}
+%%%%%%%%%%%%%%%%%%%%%%%
+%% BEGIN_FILE: mteck.sty
+%% NOTE: Everything between here and END_FILE can
+%% be relocated to "mteck.sty" and then included with:
+%\usepackage{mteck}
+
+% Dependencies
+% NOTE: Some packages (lastpage, hyperref) require second build!
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{fontawesome5}
+\usepackage{multicol}
+\usepackage{bookmark}
+\usepackage{lastpage}
+
+% Sans-Serif
+%\usepackage[sfdefault]{FiraSans}
+%\usepackage[sfdefault]{roboto}
+%\usepackage[sfdefault]{noto-sans}
+%\usepackage[default]{sourcesanspro}
+
+% Serif
+\usepackage{CormorantGaramond}
+\usepackage{charter}
+
+% Colors
+% Use with \color{Name}
+% Can wrap entire heading with {\color{accent} [...] }
+\usepackage{xcolor}
+\definecolor{accentTitle}{HTML}{0e6e55}
+\definecolor{accentText}{HTML}{0e6e55}
+\definecolor{accentLine}{HTML}{a16f0b}
+
+% Misc. Options
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\urlstyle{same}
+
+% Adjust Margins
+\addtolength{\oddsidemargin}{-0.7in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.19in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+\setlength{\multicolsep}{-3.0pt}
+\setlength{\columnsep}{-1pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\footskip}{3.7pt}
+\raggedbottom
+\raggedright
+
+% ATS Readability
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+%-----------------%
+% Custom Commands %
+%-----------------%
+
+% Centered title along with subtitle between HR
+% Usage: \documentTitle{Name}{Details}
+\newcommand{\documentTitle}[2]{
+  \begin{center}
+	{\Huge\color{accentTitle} #1}
+	\vspace{10pt}
+	{\color{accentLine} \hrule}
+	\vspace{2pt}
+	%{\footnotesize\color{accentTitle} #2}
+	\footnotesize{#2}
+	\vspace{2pt}
+	{\color{accentLine} \hrule}
+  \end{center}
+}
+
+% Create a footer with correct padding
+% Usage: \documentFooter{\thepage of X}
+\newcommand{\documentFooter}[1]{
+  \setlength{\footskip}{10.25pt}
+  \fancyfoot[C]{\footnotesize #1}
+}
+
+% Simple wrapper to set up page numbering
+% Usage: \numberedPages
+% WARNING: Must run pdflatex twice!
+\newcommand{\numberedPages}{
+  \documentFooter{\thepage/\pageref{LastPage}}
+}
+
+% Section heading with horizontal rule
+% Usage: \section{Title}
+\titleformat{\section}{
+  \vspace{-5pt}
+  \color{accentText}
+  \raggedright\large\bfseries
+}{}{0em}{}[\color{accentLine}\titlerule]
+
+% Section heading with separator and content on same line
+% Usage: \tinysection{Title}
+\newcommand{\tinysection}[1]{
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}
+  {\large{\bfseries\color{accentText}#1} {\color{accentLine} |}}
+}
+
+% Indented line with arguments left/right aligned in document
+% Usage: \heading{Left}{Right}
+\newcommand{\heading}[2]{
+  \hspace{10pt}#1\hfill#2\\
+}
+
+% Adds \textbf to \heading
+\newcommand{\headingBf}[2]{
+  \heading{\textbf{#1}}{\textbf{#2}}
+}
+
+% Adds \textit to \heading
+\newcommand{\headingIt}[2]{
+  \heading{\textit{#1}}{\textit{#2}}
+}
+
+% Template for itemized lists
+% Usage: \begin{resume_list} [items] \end{resume_list}
+\newenvironment{resume_list}{
+  \vspace{-7pt}
+  \begin{itemize}[itemsep=-2px, parsep=1pt, leftmargin=30pt]
+}{
+  \end{itemize}
+  %\vspace{-2pt}
+}
+
+% Formats an item to use as an itemized title
+% Usage: \itemTitle{Title}
+\newcommand{\itemTitle}[1]{
+  \item[] \underline{#1}\vspace{4pt}
+}
+
+% Bullets used in itemized lists
+\renewcommand\labelitemi{--}
+
+%% END_FILE: mteck.sty
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+%===================%
+% John Doe's Resume %
+%===================%
+
+%\numberedPages % NOTE: lastpage requires a second build
+%\documentFooter{\thepage of 2} % Does similar without using lastpage
+\begin{document}
+
+  %---------%
+  % Heading %
+  %---------%
+
+  \documentTitle{Jianda Chien}{
+	% Web Version
+	%\raisebox{-0.05\height} \faPhone\ [redacted - web copy] ~
+	%\raisebox{-0.15\height} \faEnvelope\ [redacted - web copy] ~
+	%%
+	\href{tel:+886 919138697}{
+	  \raisebox{-0.05\height} \faPhone\ +886 919138697} ~ | ~
+	\href{mailto:jianda851013@gmail.com}{
+	  \raisebox{-0.15\height} \faEnvelope\ jianda851013@gmail.com} ~ | ~
+	\href{https://www.linkedin.com/in/tsung-you-chien-66ba471bb/}{
+	  \raisebox{-0.15\height} \faLinkedin\ linkedin.com/in/tsung-you-chien} ~ | ~
+	\href{https://github.com/jianda1013}{
+	  \raisebox{-0.15\height} \faGithub\ github.com/jianda1013}
+  }
+
+  %--------%
+  % Skills %
+  %--------%
+
+  \section{Skills}
+
+  \begin{multicols}{2}
+	\begin{itemize}[itemsep=2px, parsep=1pt, leftmargin=75pt]
+	  \item[\textbf{Automation}] CloudFormation, AWS CDK, Gitlab CI
+	  \item[\textbf{Container}] Docker, Podman, Kubernetes, Gitlab Container Registry
+	  \item[\textbf{Languages}] Python, Node.js, Typescript, Bash
+	  \item[\textbf{Policies}] ISO 27001, ISO 800-53
+	  \item[\textbf{Tools}] CloudWatch, CloudTrail, Snyk, SonarQube, Sentry
+	  \item[\textbf{Others}] Route53, VPC, Lambda, DynamoDB, S3
+	\end{itemize}
+  \end{multicols}
+
+  %------------%
+  % Experience %
+  %------------%
+
+  \section{Experience}
+
+  \headingBf{PranaQ}{Nov 2022 -- Present}
+  \headingIt{Full Stack Engineer}{}
+  \begin{resume_list}
+	\vspace{6pt}
+	\itemTitle{Operations}
+	\item Architected and implemented CloudWatch monitoring dashboards, reducing incident response time by 75\%
+	\item Designed and deployed multi-account AWS infrastructure using CloudFormation, managing dev, staging and production environments
+	\item Established comprehensive CI/CD pipelines handling routine deployments
+	\item Implemented security controls and compliance measures to achieve ISO 27001 certification
+	\vspace{6pt}
+	\itemTitle{Development}
+	\item Architected and developed full-stack web application using TypeScript, Node.js, and React.
+	\item Designed and implemented serverless microservices architecture using AWS Lambda and API Gateway.%
+	\item Optimized Lambda cold start times from 3 to 0.5 seconds through code configuration tuning
+	\item Implemented comprehensive error tracking and monitoring, achieving 95\% application reliability
+	\vspace{6pt}
+	\itemTitle{Others}
+	\item Designed and executed zero-downtime DynamoDB migration strategy, successfully migrating 100+ GB of data while maintaining data integrity
+	\item Implemented automated disaster recovery system with 2-hour RPO and 30-minute RTO objectives
+	\item Architected multi-region DNS failover setup using Route53 for high availability
+	\item Designed secure network architecture with isolated VPC subnets, implementing security groups and NACLs for enhanced protection
+  \end{resume_list}
+
+  \headingBf{Brilltek}{Mar 2020 -- Oct 2021}
+  \headingIt{Backend Engineer}{}
+  \begin{resume_list}
+	\item Developed backend service with Node.js, and MariaDB.
+	\item Build Docker images for projects and deployed to DockerHub.
+	\item Refactor old projects to modern ES6 standards. Clean up code and improve code quality.
+  \end{resume_list}
+
+  %-----------%
+  % Education %
+  %-----------%
+
+  \section{Education}
+
+  \headingBf{National Chengchi University}{Sep 2021 -- Jan 2024} % Note: Adding year(s) exposes an implied age
+  \headingIt{Master in Computer Science}{}
+  \headingIt{Minors: Applied Cryptography}{}
+
+  \headingBf{National Taiwan University}{Sep 2015 -- Jun 2019} % Note: Adding year(s) exposes an implied age
+  \headingIt{Bachelor in Computer Science and Information Engineering}{}
+
+  %----------------------------%
+  % Extracurricular Activities %
+  %----------------------------%
+
+  \section{Activities}
+
+  \headingBf{AWS Summit}{Jul 2024}
+  \begin{resume_list}
+	\item Speaker of AWS Summit Taipei Meetup sharing experience of using Control Tower and AWS Organizations.
+	\item Sharing knowledge of AWS security and compliance to meet FDA compliance.
+  \end{resume_list}
+
+  \headingBf{Cryptography Algorithms Implementation}{2023}
+  \begin{resume_list}
+	\item Applied pbc and gmp library to implement cryptographic algorithms.
+	\item Build Docker images for easy setup clean environment for development algorithms and testing.
+  \end{resume_list}
+
+
+\end{document}
